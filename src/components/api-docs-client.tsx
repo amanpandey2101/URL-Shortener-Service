@@ -119,7 +119,7 @@ export default function ApiDocsClient({ endpoints }: ApiDocsClientProps) {
     setSelectedEndpoint(endpoint);
     setRequestBody(JSON.stringify({ 
       url: "https://google.com",
-      customAlias: "my-custom-alias"
+      shortCode: "mylink"
     }, null, 2));
     setResponse(null);
     setIsModalOpen(true);
@@ -260,7 +260,7 @@ export default function ApiDocsClient({ endpoints }: ApiDocsClientProps) {
                         <button
                           onClick={() => copyToClipboard(JSON.stringify({ 
                             url: "https://example.com/very-long-url",
-                            customAlias: "my-custom-alias"
+                            shortCode: "mylink"
                           }, null, 2))}
                           className="absolute top-2 right-2 bg-gray-700 text-white px-2 py-1 rounded text-xs hover:bg-gray-600"
                         >
@@ -269,7 +269,7 @@ export default function ApiDocsClient({ endpoints }: ApiDocsClientProps) {
                         <pre className="text-xs sm:text-sm overflow-x-auto">
                           <code>{JSON.stringify({ 
                             url: "https://example.com/very-long-url",
-                            customAlias: "my-custom-alias"
+                            shortCode: "mylink"
                           }, null, 2)}</code>
                         </pre>
                       </div>

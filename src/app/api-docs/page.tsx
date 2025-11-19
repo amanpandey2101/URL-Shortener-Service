@@ -74,10 +74,10 @@ export const metadata: Metadata = {
 
 const endpoints = [
   {
-    title: "Shorten URL",
+    title: "Create Link",
     method: "POST",
-    endpoint: "/api/shorten",
-    description: "Create a short URL from a long URL with optional custom alias",
+    endpoint: "/api/links",
+    description: "Create a short URL from a long URL with optional custom code",
     parameters: [
       {
         name: "url",
@@ -87,11 +87,11 @@ const endpoints = [
         example: "https://example.com/very-long-url",
       },
       {
-        name: "customAlias",
+        name: "shortCode",
         type: "string",
         required: false,
-        description: "Custom alias for the short URL (3-50 characters, letters, numbers, hyphens, and underscores only)",
-        example: "my-custom-alias",
+        description: "Custom short code (6-8 characters, alphanumeric only). If not provided, a random code will be generated.",
+        example: "mylink",
       },
     ],
     response: {
@@ -100,6 +100,62 @@ const endpoints = [
         shortCode: "string",
         shortUrl: "string",
       },
+      error: {
+        error: "string",
+      },
+    },
+  },
+  {
+    title: "List All Links",
+    method: "GET",
+    endpoint: "/api/links",
+    description: "Get a list of all shortened links",
+    parameters: [],
+    response: {
+      success: "Array of link objects",
+    },
+  },
+  {
+    title: "Get Link Stats",
+    method: "GET",
+    endpoint: "/api/links/:code",
+    description: "Get statistics for a specific short code",
+    parameters: [
+      {
+        name: "code",
+        type: "string",
+        required: true,
+        description: "The short code",
+        example: "abc123",
+      },
+    ],
+    response: {
+      success: {
+        id: "number",
+        originalUrl: "string",
+        shortCode: "string",
+        clicks: "number",
+        lastClickedAt: "string | null",
+        createdAt: "string",
+      },
+    },
+  },
+  {
+    title: "Delete Link",
+    method: "DELETE",
+    endpoint: "/api/links/:code",
+    description: "Delete a shortened link",
+    parameters: [
+      {
+        name: "code",
+        type: "string",
+        required: true,
+        description: "The short code to delete",
+        example: "abc123",
+      },
+    ],
+    response: {
+      success: "Empty object",
       error: {
         error: "string",
       },

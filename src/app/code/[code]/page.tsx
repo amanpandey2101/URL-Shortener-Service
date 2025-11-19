@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { FaGlobe, FaLink, FaMousePointer, FaClock, FaCalendarAlt, FaArrowLeft, FaCopy, FaCheck } from "react-icons/fa";
+import { FaGlobe, FaLink, FaMousePointer, FaClock, FaCalendarAlt, FaArrowLeft } from "react-icons/fa";
 
 export default async function StatsPage({ params }: { params: Promise<{ code: string }> }) {
   const { code } = await params;

@@ -35,7 +35,7 @@ export async function DELETE(
       await prisma.url.delete({
         where: { shortCode: code }
       })
-    } catch (e) {
+    } catch {
         // Prisma error for record not found is P2025
         return NextResponse.json({ error: 'Not found' }, { status: 404 })
     }

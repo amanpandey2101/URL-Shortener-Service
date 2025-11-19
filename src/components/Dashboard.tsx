@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { FaTrash, FaChartBar, FaCopy, FaCheck, FaExternalLinkAlt, FaMagic, FaSearch, FaLink } from "react-icons/fa";
+import { FaTrash, FaChartBar, FaCopy, FaMagic, FaSearch, FaLink } from "react-icons/fa";
 
 interface UrlData {
   shortCode: string;
@@ -15,7 +15,6 @@ interface UrlData {
 export default function Dashboard() {
   const [links, setLinks] = useState<UrlData[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
   
   // Form state
   const [url, setUrl] = useState("");
@@ -34,8 +33,7 @@ export default function Dashboard() {
       const data = await res.json();
       setLinks(data);
     } catch (err) {
-      setError("Error loading links");
-      console.error(err);
+      console.error("Error loading links:", err);
     } finally {
       setLoading(false);
     }

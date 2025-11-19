@@ -3,7 +3,7 @@ import { prisma } from '@/lib/prisma'
 import { generateShortCode, isValidUrl } from '@/lib/utils'
 
 // GET /api/links - List all links
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     const urls = await prisma.url.findMany({
       orderBy: { createdAt: 'desc' }
