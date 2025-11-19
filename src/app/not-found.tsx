@@ -24,7 +24,7 @@ export default function NotFound() {
             Page Not Found
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-md mx-auto">
-            Oops! The page you're looking for doesn't exist or the short link has been deleted.
+            Oops! The page you&apos;re looking for doesn&apos;t exist or the short link has been deleted.
           </p>
         </div>
 
